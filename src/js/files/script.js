@@ -6,10 +6,14 @@ import { isMobile } from "./functions.js";
 import { flsModules } from "./modules.js";
 
 window.onload = function () {
+
     const parallax = document.querySelector('.parallax');
+    const content = document.querySelector('.parallax__container');
+
+    const parallaxBody = document.querySelector('.parallax__body');
+    // parallaxBody.classList.add("fixed");
 
     if (parallax) {
-        const content = document.querySelector('.parallax__container');
         const clouds = document.querySelector('.images-parallax__clouds');
         const mountains = document.querySelector('.images-parallax__mountains');
         const human = document.querySelector('.images-parallax__human');
@@ -76,4 +80,11 @@ window.onload = function () {
             human.parentElement.style.cssText = `transform: translate(-${scrollTopProcent / 3}%,0%);`;
         }
     }
+
+    document.addEventListener('scroll', function() {
+        const posTop = content.getBoundingClientRect().top;
+        
+        // Блок достиг верхней границы экрана (или выше)
+        parallaxBody.classList.toggle('fixed', posTop >= -15);
+      });
 }

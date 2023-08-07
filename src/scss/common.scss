@@ -3,11 +3,16 @@
     min-height: 100vh;
 
     &__body {
-        position: fixed;
+        position: absolute;
         width: 100%;
         height: 100%;
         top: 0;
         left: 0;
+        overflow: hidden;
+    }
+
+    &__body.fixed {
+        position: fixed;
     }
 
     &__container {
@@ -24,22 +29,24 @@
         letter-spacing: 6px;
         margin: 0 0 30px 0;
         align-items: center;
-        
-        &::before{
+
+        &::before {
             flex: 0 0 70px;
             content: "";
             margin: 0 30px 0 0;
             background-color: #fbd784;
             height: 1px;
         }
+
         @media (max-width: $mobile) {
-            &{
+            & {
                 font-size: 16px;
                 margin: 0 15px 0 0;
             }
         }
+
         @media (max-width: $mobileSmall) {
-            &{
+            & {
                 flex: 0 050px;
                 margin: 0 10px 0 0;
             }
@@ -48,13 +55,15 @@
 
     &__title {
         font-size: 88px;
+
         @media (max-width: $mobile) {
-            &{
+            & {
                 font-size: 50px;
             }
         }
+
         @media (max-width: $mobileSmall) {
-            &{
+            & {
                 font-size: 36px;
             }
         }
@@ -82,7 +91,7 @@
 
     &__clouds,
     &__mountains,
-    &__human{
+    &__human {
         position: absolute;
         width: 100%;
         height: 100%;
@@ -90,7 +99,7 @@
         left: 0%;
     }
 
-    &__clouds{
+    &__clouds {
         background: url("../img/img/clouds.jpg") top / cover no-repeat;
         top: 0;
     }
@@ -108,7 +117,7 @@
 
         @media (max-aspect-ratio: 3/2) {
             & {
-              background-position: 20% top;
+                background-position: 20% top;
             }
         }
     }
@@ -118,8 +127,8 @@
     background-color: #0b1d26;
     position: relative;
     z-index: 2;
-    
-    &::before{
+
+    &::before {
         content: "";
         position: absolute;
         pointer-events: none;
@@ -128,12 +137,11 @@
         width: 100%;
         height: 300px;
         transform: translate(0px, -100%);
-        background: linear-gradient(0deg, rgba(11,29,38,1) 0%, rgba(11,29,38,0.83) 35%, rgba(106,113,115,0.14889705882352944) 80%);
+        background: linear-gradient(0deg, rgba(11, 29, 38, 1) 0%, rgba(11, 29, 38, 0.83) 35%, rgba(106, 113, 115, 0.14889705882352944) 80%);
     }
 
-    &__container {
-        
-    }
+    &__container {}
+
     &__title {
         font-size: 35px;
         margin: 0 0 30px 0;
@@ -143,10 +151,82 @@
         font-size: 16px;
         line-height: 150%;
 
-        p{
+        p {
             margin: 0px 0px 30px 0;
         }
     }
 }
 
+.sticky {
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
 
+    &__bg {
+        position: sticky;
+        display: block;
+        left: 0;
+        transform: translate(-160px, 0%);
+        top: 80px;
+        width: 1000%;
+        height: calc(100vh - 80px);
+        z-index: 1;
+        background-color: #0b1d26;
+    }
+
+    &__row {
+        position: relative;
+        z-index: 2;
+        height: 100%;
+        padding-top: 100px;
+        margin-top: calc(-100vh + 80px);
+        display: flex;
+        column-gap: 30px;
+    }
+
+    &__column {
+        width: 50%;
+    }
+}
+
+.column-sticky {
+
+    &__title {
+        margin-bottom: 30px;
+    }
+
+    &__text {
+        padding-left: 30px;
+    }
+
+    &__item {
+        margin-bottom: 30px;
+    }
+
+    &__img {
+        position: relative;
+        width: calc($sizeBlock * 30);
+        height: calc($sizeBlock * 20);
+
+        img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+}
+
+.title {
+    text-align: center;
+    font-size: 35px;
+}
+
+.text {
+    font-size: 16px;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 18px;
+}
